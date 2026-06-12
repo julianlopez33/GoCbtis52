@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GO-CBTIS52</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div id="app">
+        <!-- VISTA DE AUTENTICACION / REGISTRO -->
+        <main id="view-auth" class="view active">
+            <div class="auth-container glassmorphism">
+                <div class="auth-box animate-pop">
+                    <img src="assets/logo.jpeg" alt=""
+                        class="logo">
+                    <h1>GO-CBTIS52</h1>
+                    <div
+                        style="display: flex; justify-content: center; margin-bottom: 2rem; border-bottom: 2px solid #eee;">
+                        <button id="btn-show-login" class="nav-btn active"
+                            style="font-size:1.1rem; padding:0.8rem 1.5rem; flex:1;">Iniciar Sesión</button>
+                        <button id="btn-show-register" class="nav-btn"
+                            style="font-size:1.1rem; padding:0.8rem 1.5rem; flex:1;">Registrarse</button>
+                    </div>
+
+                    <!-- FORMULARIO INICIAR SESION -->
+                    <form id="login-form">
+                        <div class="input-group">
+                            <label for="login-name">Correo Electrónico</label>
+                            <input type="email" id="login-name" required placeholder="ejemplo@cbtis52.mx">
+                        </div>
+                        <div class="input-group">
+                            <label for="login-pass">Contraseña</label>
+                            <input type="password" id="login-pass" required placeholder="Tu contraseña">
+                        </div>
+                        <div class="input-group">
+                            <label for="login-age">Edad Confirmatoria</label>
+                            <input type="number" id="login-age" required placeholder="Confirma tu edad">
+                        </div>
+                        <button type="submit" class="btn-primary">Entrar al Portal</button>
+                    </form>
+
+                    <!-- FORMULARIO REGISTRARSE -->
+                    <form id="register-form" style="display: none;">
+                        <div class="input-group">
+                            <label for="reg-name">Nombre Completo</label>
+                            <input type="text" id="reg-name" required placeholder="Tu nombre">
+                        </div>
+                        <div class="input-group">
+                            <label for="reg-email">Correo Electrónico</label>
+                            <input type="email" id="reg-email" required placeholder="ejemplo@cbtis52.mx">
+                        </div>
+                        <div class="input-group">
+                            <label for="reg-age">Edad Actual</label>
+                            <input type="number" id="reg-age" required placeholder="Ingresa tu edad">
+                        </div>
+                        <div class="input-group">
+                            <label for="reg-pass">Contraseña</label>
+                            <input type="password" id="reg-pass" required placeholder="Crea una contraseña">
+                        </div>
+                        <div class="input-group">
+                            <label for="reg-pass-confirm">Confirmar Contraseña</label>
+                            <input type="password" id="reg-pass-confirm" required placeholder="Repite la contraseña">
+                        </div>
+                        <button type="submit" class="btn-primary" style="background-color: var(--color-blue);">Crear Cuenta Nueva</button>
+                    </form>
+                </div>
+            </div>
+        </main>
+
+        <!-- VISTA DE BIENVENIDA (ONBOARDING) -->
+        <main id="view-onboarding" class="view">
+            <div class="onboarding-container">
+                <div class="onboarding-box animate-pop">
+                    <div class="tutorial-image" style="background: transparent; font-size: 6rem; margin-bottom: 0.5rem;">👋</div>
+                    <h1>¡Bienvenido a GO-CBTIS52!</h1>
+                    <p>Estamos emocionados de que estés aquí. ¿Te gustaría realizar un breve recorrido para conocer todas las funciones que tenemos para ti?</p>
+                    <div style="display: flex; flex-direction: column; gap: 1rem;">
+                        <button id="btn-start-tutorial" class="btn-primary" style="font-size: 1.2rem; padding: 1.2rem;">Ver el Tutorial 🚀</button>
+                        <button id="btn-skip-tutorial" class="btn-detail" style="border-width: 1px; font-size: 1rem;">Omitir e ir al Tablero</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- VISTA DE PASOS DEL TUTORIAL -->
+        <main id="view-tutorial" class="view">
+            <div class="tutorial-wrapper-full">
+                <div class="tutorial-step-container animate-pop">
+                    <div class="tutorial-content" id="tutorial-content-area">
+                        <!-- El contenido del paso se inyecta aqui -->
+                    </div>
+                    <div class="tutorial-footer">
+                        <div class="tutorial-dots" id="tutorial-dots">
+                            <!-- Puntos de progreso -->
+                        </div>
+                        <div class="tutorial-btns">
+                            <button id="btn-tutorial-prev" class="btn-tutorial-nav btn-prev">Anterior</button>
+                            <button id="btn-tutorial-next" class="btn-tutorial-nav btn-next">Siguiente</button>
+                            <button id="btn-tutorial-finish" class="btn-tutorial-nav btn-finish" style="display:none;">¡Entendido!</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- VISTA DE DASHBOARD -->
+        <main id="view-dashboard" class="view">
+            <header class="app-header">
+                <h2>GO-CBTIS52</h2>
+                <nav class="main-tabs">
+                    <button class="nav-btn active" data-tab="tab-home">Inicio Institucional</button>
+                    <button class="nav-btn" data-tab="tab-news">Novedades</button>
+                    <button class="nav-btn" data-tab="tab-info">Especialidades</button>
+                    <button class="nav-btn" data-tab="tab-caed">CAED</button>
+                    <button class="nav-btn" data-tab="tab-games">Minijuegos</button>
+                    <button class="nav-btn" data-tab="tab-profile">Mi Perfil</button>
+                    <button class="nav-btn" data-tab="tab-legal">Aviso Legal</button>
+                    <button class="nav-btn logout-btn">Salir</button>
+                </nav>
+            </header>
+
+            <div class="dashboard-content">
+                <!-- TAB: INICIO (CBTIS 52 INFO) -->
+                <div id="tab-home" class="tab-content active">
+                    <section class="fade-in">
+                        <div class="detail-hero"
+                            style="height: 250px; background: linear-gradient(135deg, var(--color-blue), var(--color-guinda)); border-radius: var(--radius); display: flex; align-items: center; justify-content: center; color: white; text-align: center; padding: 2rem; margin-bottom: 2rem; box-shadow: var(--shadow);">
+                            <div>
+                                <h1
+                                    style="font-size: 2.2rem; margin-bottom: 0.5rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);">
+                                    Centro de Bachillerato Tecnológico Industrial y de Servicios No. 52</h1>
+                                <p style="font-size: 1.2rem; opacity: 0.9;">Formando jóvenes con excelencia tecnológica
+                                    y valores humanísticos de alto nivel.</p>
+                            </div>
+                        </div>
+
+                        <div class="cards-grid" style="margin-bottom: 2rem;">
+                            <div class="specialty-card"
+                                style="padding: 2rem; border-top: 5px solid var(--color-guinda);">
+                                <h3 style="color: var(--color-guinda); margin-bottom: 1rem; font-size: 1.5rem;">Nuestra
+                                    Misión</h3>
+                                <p style="line-height: 1.6; color: var(--color-text-light);">Formar ciudadanos con
+                                    habilidades tecnológicas, científicas y humanísticas, capaces de integrarse al
+                                    sector productivo y a la educación superior, contribuyendo al desarrollo sustentable
+                                    de la sociedad a través de un modelo educativo de máxima calidad.</p>
+                            </div>
+                            <div class="specialty-card" style="padding: 2rem; border-top: 5px solid var(--color-blue);">
+                                <h3 style="color: var(--color-blue); margin-bottom: 1rem; font-size: 1.5rem;">Nuestra
+                                    Visión</h3>
+                                <p style="line-height: 1.6; color: var(--color-text-light);">Ser una institución de
+                                    educación media superior tecnológica líder, reconocida por su excelencia académica,
+                                    la innovación en sus procesos educativos y la formación integral de egresados
+                                    altamente competitivos y éticos para el mañana.</p>
+                            </div>
+                            <div class="specialty-card" style="padding: 2rem; border-top: 5px solid #ffcc00; cursor: pointer;" onclick="goToTab('tab-caed')">
+                                <h3 style="color: #e6b800; margin-bottom: 1rem; font-size: 1.5rem;">Conoce el CAED</h3>
+                                <p style="line-height: 1.6; color: var(--color-text-light);">Centro de Atención para Estudiantes con Discapacidad. Ofrecemos Bachillerato General no escolarizado con especialidad en Informática, promoviendo la inclusión y el éxito académico.</p>
+                                <button class="btn-detail" style="margin-top: auto; border-color: #ffcc00; color: #e6b800;">Ver Apartado ➔</button>
+                            </div>
+                        </div>
+
+                        <div class="glassmorphism"
+                            style="padding: 2rem; border-radius: var(--radius); margin-bottom: 2rem;">
+                            <h3
+                                style="color: var(--color-blue); margin-bottom: 1rem; border-bottom: 1px solid #ddd; padding-bottom: 0.5rem;">
+                                Valores Institucionales</h3>
+                            <ul
+                                style="list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; padding-left: 0;">
+                                <li style="padding: 1rem; background: rgba(0,0,0,0.03); border-radius: 8px;"><strong>📚
+                                        Liderazgo:</strong> Fomentar la iniciativa estudiantil.</li>
+                                <li style="padding: 1rem; background: rgba(0,0,0,0.03); border-radius: 8px;"><strong>🤝
+                                        Responsabilidad:</strong> Compromiso social inquebrantable.</li>
+                                <li style="padding: 1rem; background: rgba(0,0,0,0.03); border-radius: 8px;"><strong>🌱
+                                        Sustentabilidad:</strong> Cuidado de nuestro entorno ambiental.</li>
+                                <li style="padding: 1rem; background: rgba(0,0,0,0.03); border-radius: 8px;"><strong>💡
+                                        Innovación:</strong> Mejora tecnológica e intelectual continua.</li>
+                            </ul>
+                        </div>
+
+                        <div class="glassmorphism"
+                            style="padding: 2rem; border-radius: var(--radius); margin-bottom: 2rem;">
+                            <h3
+                                style="color: var(--color-blue); margin-bottom: 1rem; border-bottom: 1px solid #ddd; padding-bottom: 0.5rem;">
+                                Reseña Histórica</h3>
+                            <p style="line-height: 1.6; color: var(--color-text-light);">El Centro de Bachillerato
+                                Tecnológico Industrial y de Servicios No. 52 abrió sus puertas por primera vez en
+                                noviembre de 1973, naciendo con el firme propósito de industrializar la región a través
+                                de la formación de técnicos altamente capacitados. A lo largo de más de 5 décadas,
+                                nuestra institución ha visto graduarse a innumerables generaciones de jóvenes que hoy en
+                                día lideran el sector gubernamental, comercial e industrial de nuestra entidad,
+                                posicionándonos históricamente como el bachillerato tecnológico más prestigioso de la
+                                zona.</p>
+                        </div>
+
+                        <div class="glassmorphism" style="padding: 2rem; border-radius: var(--radius);">
+                            <h3
+                                style="color: var(--color-guinda); margin-bottom: 1rem; border-bottom: 1px solid #ddd; padding-bottom: 0.5rem;">
+                                Infraestructura de Vanguardia</h3>
+                            <p style="line-height: 1.6; color: var(--color-text-light); margin-bottom: 1rem;">Para el
+                                correcto desarrollo de nuestro modelo por competencias y la formación integral, el
+                                plantel cuenta con instalaciones permanentemente equipadas:</p>
+                            <ul
+                                style="list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; padding-left: 0;">
+                                <li
+                                    style="padding: 1rem; background: rgba(255,255,255,0.5); border-left: 4px solid var(--color-blue); border-radius: 8px;">
+                                    <strong>💻 5 Centros de Cómputo:</strong> Equipos modernos con fibra óptica
+                                    dedicados a Programación y Ofimática.</li>
+                                <li
+                                    style="padding: 1rem; background: rgba(255,255,255,0.5); border-left: 4px solid var(--color-blue); border-radius: 8px;">
+                                    <strong>🔬 Laboratorio Clínico:</strong> Mesas de mármol, microscopios trinoculares
+                                    y red de recolección de muestras y patógenos.</li>
+                                <li
+                                    style="padding: 1rem; background: rgba(255,255,255,0.5); border-left: 4px solid var(--color-guinda); border-radius: 8px;">
+                                    <strong>⚽ Cancha de Fútbol:</strong> Campo amplio empastado para torneos
+                                    interdisciplinarios y entrenamiento físico.</li>
+                                <li
+                                    style="padding: 1rem; background: rgba(255,255,255,0.5); border-left: 4px solid var(--color-guinda); border-radius: 8px;">
+                                    <strong>🏀 Canchas de Básquetbol:</strong> Múltiples canchas con gradas y tableros
+                                    profesionales para competencias oficiales.</li>
+                                <li
+                                    style="padding: 1rem; background: rgba(255,255,255,0.5); border-left: 4px solid var(--color-blue); border-radius: 8px;">
+                                    <strong>🏐 Cancha de Voleibol:</strong> Espacio con malla reglamentaria y
+                                    delimitación oficial para el deporte estudiantil.</li>
+                            </ul>
+                        </div>
+                </div>
+
+                <!-- TAB: NOVEDADES -->
+                <div id="tab-news" class="tab-content">
+                    <section class="novedades-section fade-in">
+                        <h3>Novedades CBTIS 52</h3>
+                        <div id="news-container" style="display: flex; flex-direction: column; gap: 1.5rem;">
+                            <!-- El feed de noticias se inyecta dinámicamente con novedades.js -->
+                        </div>
+                    </section>
+                </div>
+
+                <!-- TAB: INFORMACION -->
+                <div id="tab-info" class="tab-content">
+                    <section class="specialties-section fade-in">
+                        <h3>Información de Especialidades</h3>
+                        <div class="cards-grid" id="specialties-container">
+                            <!-- Tarjetas (solo info) -->
+                        </div>
+                    </section>
+                </div>
+
+                <!-- TAB: MINIJUEGOS -->
+                <div id="tab-games" class="tab-content">
+                    <section class="specialties-section fade-in">
+                        <h3>Sala de Juegos Interactiva</h3>
+                        <p class="tab-desc">Selecciona el juego de la especialidad que quieras probar. Podrás elegir tu
+                            nivel de desafío.</p>
+                        <div class="cards-grid" id="games-container">
+                            <!-- Tarjetas (botones de jugar) -->
+                        </div>
+                    </section>
+                </div>
+
+                <!-- TAB: PERFIL -->
+                <div id="tab-profile" class="tab-content">
+                    <section class="profile-section fade-in" style="display: flex; justify-content: center; padding: 2rem;">
+                        <div class="profile-card glassmorphism" style="padding: 3rem; border-radius: var(--radius); text-align: center; width: 100%; max-width: 500px; border-top: 5px solid var(--color-blue); box-shadow: var(--shadow);">
+                            <div class="profile-avatar" style="width: 120px; height: 120px; background: linear-gradient(135deg, var(--color-blue), var(--color-guinda)); color: white; display: flex; align-items: center; justify-content: center; font-size: 4rem; margin: 0 auto 1.5rem; border-radius: 50%; box-shadow: 0 4px 10px rgba(0,0,0,0.2);">
+                                👤
+                            </div>
+                            <h3 id="profile-name-display" style="font-size: 2rem; margin-bottom: 0.5rem; color: var(--color-blue);">Cargando...</h3>
+                            <p id="profile-email-display" style="font-size: 1.2rem; color: var(--color-text-light); margin-bottom: 1rem;">cargando...</p>
+                            <div style="background: rgba(0,0,0,0.03); padding: 1rem; border-radius: 8px; margin-bottom: 2rem; display: inline-block; width: 100%;">
+                                <span style="font-weight: bold; color: var(--color-guinda); font-size: 1.1rem;">Edad Registrada:</span> 
+                                <span id="profile-age-display" style="font-size: 1.1rem; color: var(--color-text);">---</span>
+                            </div>
+                            <button class="btn-primary" style="background-color: var(--color-guinda); margin-top: 1rem;">Editar Perfil (Próximamente)</button>
+                            <button class="btn-detail" style="margin-top: 1rem; width: 100%;" onclick="resetTutorial()">Reiniciar Tutorial 🔄</button>
+                        </div>
+                    </section>
+                </div>
+
+                <!-- TAB: AVISO LEGAL -->
+                <div id="tab-legal" class="tab-content">
+                    <section class="fade-in" style="padding: 2rem;">
+                        <div class="glassmorphism" style="padding: 3rem; border-radius: var(--radius); border-left: 5px solid var(--color-guinda); max-width: 800px; margin: 0 auto; box-shadow: var(--shadow);">
+                            <h2 style="color: var(--color-guinda); margin-bottom: 1.5rem; border-bottom: 1px solid #ddd; padding-bottom: 0.5rem; font-size: 1.8rem;">Política de Privacidad y Derechos de Autor</h2>
+                            
+                            <p style="font-weight: 600; color: var(--color-blue); margin-bottom: 1.5rem; font-size: 1.1rem; line-height: 1.5;">
+                                CBTIS 52 – Estudiantes de 6 A Vespertino Programación <br>
+                                Programa de Control y Notificación <br>
+                                Derechos reservados &copy; Prohibida su imitación y uso sin permiso.
+                            </p>
+                            
+                            <p style="line-height: 1.7; color: var(--color-text-light); margin-bottom: 1rem; font-size: 1.05rem;">
+                                Todo el material contenido en este proyecto está protegido por la Ley Federal del Derecho de Autor (LFDA) de los Estados Unidos Mexicanos. El programa y aplicación <strong>go! Cbtis52</strong> incluyendo su código, imágenes, referencias, texto explicativo y contenido general, está protegido bajo derechos de autor.
+                            </p>
+                            
+                            <p style="line-height: 1.7; color: var(--color-text-light); margin-bottom: 1rem; font-size: 1.05rem;">
+                                Este sistema fue creado inicialmente como un proyecto académico con fines de apoyo y mejora para la institución CBTIS 52. Cualquier intento de uso del sistema sin autorización de los desarrolladores podrá ser sancionado por las autoridades correspondientes.
+                            </p>
+                            
+                            <p style="line-height: 1.7; color: var(--color-text-light); margin-bottom: 2rem; font-size: 1.05rem;">
+                                El uso del sistema puede ser autorizado a instituciones que lo requieran bajo acuerdos establecidos por los desarrolladores. Queda prohibida la distribución del sistema a terceros sin autorización directa de los desarrolladores.
+                            </p>
+                            
+                            <div style="background: rgba(0,0,0,0.03); padding: 1rem; border-radius: 8px; font-size: 0.95rem; color: var(--color-text); text-align: center; border: 1px solid rgba(0,0,0,0.05);">
+                                <strong>&copy; 2026 Desarrolladores GO CBTIS 52. Todos los derechos reservados.</strong>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                <!-- TAB: CAED -->
+                <div id="tab-caed" class="tab-content">
+                    <section class="fade-in">
+                        <div class="detail-hero"
+                            style="height: 250px; background: linear-gradient(135deg, #ffcc00, #e6b800); border-radius: var(--radius); display: flex; align-items: center; justify-content: center; color: white; text-align: center; padding: 2rem; margin-bottom: 2rem; box-shadow: var(--shadow);">
+                            <div>
+                                <h1 style="font-size: 2.5rem; margin-bottom: 0.5rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.2);">
+                                    CAED CBTIS 52</h1>
+                                <p style="font-size: 1.3rem; opacity: 1; font-weight: 600;">Centro de Atención para Estudiantes con Discapacidad</p>
+                            </div>
+                        </div>
+
+                        <div class="glassmorphism" style="padding: 2.5rem; border-radius: var(--radius); margin-bottom: 2rem; border-left: 6px solid #ffcc00;">
+                            <h3 style="color: #e6b800; margin-bottom: 1.5rem; border-bottom: 1px solid #eee; padding-bottom: 0.5rem; font-size: 1.8rem;">¿Qué significa CAED?</h3>
+                            <p style="line-height: 1.8; color: var(--color-text); font-size: 1.1rem; margin-bottom: 1.5rem;">
+                                Es un programa de la <strong>SEP/DGETI</strong> diseñado para que personas con discapacidad puedan concluir su bachillerato. El CAED atiende a alumnos con discapacidad: <strong>visual, auditiva, motriz o intelectual</strong>.
+                            </p>
+                            
+                            <h4 style="color: var(--color-blue); margin-bottom: 1rem;">Ventajas Clave del Programa:</h4>
+                            <ul style="list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; padding: 0;">
+                                <li style="padding: 1rem; background: rgba(0,0,0,0.03); border-radius: 8px; border-left: 4px solid #ffcc00;"><strong>📖 Bachillerato BNEED:</strong> Modalidad no escolarizada para estudiar a tu propio ritmo con libros de Prepa Abierta.</li>
+                                <li style="padding: 1rem; background: rgba(0,0,0,0.03); border-radius: 8px; border-left: 4px solid #ffcc00;"><strong>✅ Sin Examen de Admisión:</strong> Acceso directo y sin límite de edad.</li>
+                                <li style="padding: 1rem; background: rgba(0,0,0,0.03); border-radius: 8px; border-left: 4px solid #ffcc00;"><strong>🤝 Asesoría Especializada:</strong> Maestros capacitados en Lengua de Señas Mexicana, Braille y más.</li>
+                                <li style="padding: 1rem; background: rgba(0,0,0,0.03); border-radius: 8px; border-left: 4px solid #ffcc00;"><strong>🛠️ Material Adaptado:</strong> Recursos didácticos pensados específicamente en tu discapacidad.</li>
+                                <li style="padding: 1rem; background: rgba(0,0,0,0.03); border-radius: 8px; border-left: 4px solid #ffcc00;"><strong>🎓 Certificado Oficial:</strong> Certificado oficial de la SEP con validez en todo México.</li>
+                            </ul>
+                        </div>
+
+                        <div class="cards-grid" style="margin-bottom: 2rem;">
+                            <div class="specialty-card" style="padding: 2rem; border-top: 5px solid var(--color-blue); text-align: center;">
+                                <div style="font-size: 3rem; margin-bottom: 1rem;">🎓</div>
+                                <h4 style="color: var(--color-blue); margin-bottom: 1rem;">Inclusión en CBTis 52</h4>
+                                <p style="line-height: 1.6; color: var(--color-text-light);">Nuestro plantel fortalece la inclusión educativa mediante el CAED. Hasta la fecha, <strong>más de 40 estudiantes</strong> con discapacidad se han graduado con éxito.</p>
+                            </div>
+                            <div class="specialty-card" style="padding: 2rem; border-top: 5px solid var(--color-guinda); text-align: center;">
+                                <div style="font-size: 3rem; margin-bottom: 1rem;">👤</div>
+                                <h4 style="color: var(--color-guinda); margin-bottom: 1rem;">Perfil de Ingreso</h4>
+                                <p style="line-height: 1.6; color: var(--color-text-light);">Aceptamos alumnos con discapacidad a partir de los <strong>15 años</strong>. Si tienes alguna discapacidad, ¡puedes terminar tu prepa aquí!</p>
+                            </div>
+                        </div>
+
+                        <div class="glassmorphism" style="padding: 2.5rem; border-radius: var(--radius); border-right: 6px solid #e6b800; background: linear-gradient(to left, rgba(255, 204, 0, 0.05), transparent);">
+                            <h3 style="color: var(--color-blue); margin-bottom: 1rem; border-bottom: 1px solid #ddd; padding-bottom: 0.5rem;">¿Cómo funciona?</h3>
+                            <p style="line-height: 1.7; margin-bottom: 1.5rem;">
+                                Vas al CAED dentro del CBTis 52, recibes asesorías personalizadas, realizas exámenes por módulos a tu propio ritmo y, al finalizar, obtienes tu certificado. No necesitas estar en clases normales todo el día.
+                            </p>
+                            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;">
+                                <div>
+                                    <p><strong>📍 Ubicación:</strong> Dentro del plantel CBTis 52, Zamora, Mich.</p>
+                                    <p><strong>📧 Contacto:</strong> caed@cbtis52.mx</p>
+                                </div>
+                                <div>
+                                    <p><strong>📞 Teléfono:</strong> 436 105 2938</p>
+                                    <p><strong>🚀 Meta:</strong> Que nadie se quede sin prepa por motivos de discapacidad.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </main>
+
+        <!-- VISTA DE DETALLE ESPECIALIDAD -->
+        <main id="view-specialty-detail" class="view">
+            <header class="app-header">
+                <h2>Conoce más: <span id="detail-title">Especialidad</span></h2>
+                <nav>
+                    <button class="nav-btn btn-back-dashboard">Volver al Tablero</button>
+                </nav>
+            </header>
+
+            <div class="detail-wrapper glassmorphism animate-pop">
+                <div class="detail-hero" id="detail-hero-box">
+                    <img id="detail-img" src="" alt="Imagen Especialidad">
+                </div>
+                <div class="detail-body">
+                    <h3 style="color:var(--color-guinda); margin-bottom: 1rem;">¿Qué aprenderás?</h3>
+                    <p id="detail-desc" style="line-height: 1.6; margin-bottom: 2rem; font-size:1.1rem;"></p>
+
+                    <h3 style="color:var(--color-blue); margin-bottom: 1rem;">Ejemplos Prácticos de lo que Harás</h3>
+                    <ul id="detail-examples" class="detail-list" style="margin-bottom: 2rem;"></ul>
+
+                    <h3 style="color:var(--color-guinda); margin-bottom: 1rem;">Herramientas y Materiales Comunes</h3>
+                    <p id="detail-materials" style="line-height: 1.6; font-size:1.1rem; margin-bottom: 2rem;"></p>
+
+                    <h3 style="color:var(--color-blue); margin-bottom: 1rem;">Campo Laboral (Vida Real)</h3>
+                    <p id="detail-jobs"
+                        style="line-height: 1.6; font-size:1.1rem; border-left: 4px solid var(--color-blue); padding-left:1rem; background: rgba(0,0,0,0.02); padding: 1rem; border-radius: 5px;">
+                    </p>
+                </div>
+            </div>
+        </main>
+
+        <main id="view-rejection" class="view">
+            <div class="rejection-container glassmorphism" style="flex-direction: column; gap: 2rem; padding: 4rem 2rem; overflow-y: auto;">
+                <div class="rejection-box animate-pop" style="max-width: 600px;">
+                    <h2>Información Importante</h2>
+                    <p class="rejection-message">No entras al rango de edad (13-15) para ingresar a la página principal del CBTIS 52, pero te invitamos a conocer nuestra institución.</p>
+                    <div class="video-wrapper">
+                        <iframe width="560" height="315"
+                            src="assets/video_especialidades.mp4"
+                            title="Video Informativo" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen></iframe>
+                    </div>
+                </div>
+
+                <!-- Apartado CAED Informativo para los que no entran al rango -->
+                <div class="rejection-box animate-pop" style="max-width: 600px; border-top: 5px solid #ffcc00; text-align: left;">
+                    <h3 style="color: #e6b800; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+                        <span>🌟</span> Opción de Inclusión: CAED
+                    </h3>
+                    <p style="color: var(--color-text-light); margin-bottom: 1.2rem; line-height: 1.6;">
+                        Si cuentas con alguna discapacidad (visual, motriz, auditiva o intelectual), el CBTis 52 ofrece el <strong>CAED (Centro de Atención para Estudiantes con Discapacidad)</strong>.
+                    </p>
+                    <ul style="list-style: none; padding: 0; margin-bottom: 1.5rem; display: grid; gap: 0.8rem;">
+                        <li style="background: rgba(255, 204, 0, 0.05); padding: 0.8rem; border-radius: 8px; font-size: 0.95rem;">✅ <strong>Sin límite de edad:</strong> Ideal si tienes más de 15 años.</li>
+                        <li style="background: rgba(255, 204, 0, 0.05); padding: 0.8rem; border-radius: 8px; font-size: 0.95rem;">✅ <strong>Flexibilidad:</strong> Estudias a tu propio ritmo (Modalidad BNEED).</li>
+                        <li style="background: rgba(255, 204, 0, 0.05); padding: 0.8rem; border-radius: 8px; font-size: 0.95rem;">✅ <strong>Certificado Oficial:</strong> Bachillerato General con especialidad técnica.</li>
+                    </ul>
+                    <p style="font-size: 0.9rem; color: var(--color-text-light); border-top: 1px solid #eee; padding-top: 1rem;">
+                        Para más información, puedes acudir al plantel <strong>CBTis 52 en Zamora</strong> o contactar a <strong>caed@cbtis52.mx</strong>.
+                    </p>
+                </div>
+
+                <button class="btn-secondary back-to-login" style="max-width: 300px; margin-top: 0;">Volver al Inicio</button>
+            </div>
+        </main>
+
+        <!-- VISTA DE MINIJUEGO -->
+        <main id="view-minigame" class="view">
+            <header class="app-header">
+                <h2>Reto: <span id="game-title"></span></h2>
+                <nav>
+                    <button class="nav-btn btn-back-dashboard">Salir del Juego</button>
+                </nav>
+            </header>
+
+            <!-- MARCADOR SUPERIOR -->
+            <div id="active-scoreboard" class="scoreboard" style="display:none;">
+                <div class="score-round">Ronda <span id="score-round">1</span> / <span id="score-max">3</span></div>
+                <div class="score-stats">
+                    <span class="score-correct">✅ <span id="score-correct">0</span></span>
+                    <span class="score-incorrect">❌ <span id="score-incorrect">0</span></span>
+                </div>
+            </div>
+
+            <div class="game-wrapper">
+                <!-- Selector de Dificultad -->
+                <div id="difficulty-selector" class="game-setup-panel glassmorphism animate-pop">
+                    <h3>Elige tu Dificultad</h3>
+                    <p>Entre más difícil, el reto requerirá más destreza y conocimientos.</p>
+                    <div class="diff-buttons">
+                        <button class="btn-diff easy" onclick="startGame('facil')">Fácil 🌟</button>
+                        <button class="btn-diff med" onclick="startGame('medio')">Intermedio 🔥</button>
+                        <button class="btn-diff hard" onclick="startGame('dificil')">Difícil 💀</button>
+                    </div>
+                </div>
+
+                <!-- Contenedor Real del Juego -->
+                <div id="game-arena" class="game-container" style="display:none;">
+                    <!-- El minijuego se renderiza aqui dinamicamente -->
+                </div>
+            </div>
+        </main>
+
+    </div>
+
+    <!-- Scripts de Minijuegos -->
+    <script src="minijuegos/prog.js"></script>
+    <script src="minijuegos/conta.js"></script>
+    <script src="minijuegos/ofi.js"></script>
+    <script src="minijuegos/lab.js"></script>
+    <script src="minijuegos/rh.js"></script>
+    <script src="minijuegos/fae.js"></script>
+    <script src="minijuegos/comercio.js"></script>
+
+    <!-- Datos e Interfaz Secundaria -->
+    <script src="novedades.js"></script>
+    <script src="specialties.js"></script>
+
+    <!-- Script Principal -->
+    <script src="main.js"></script>
+</body>
+
+</html>
